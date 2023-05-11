@@ -7,5 +7,8 @@ start_markup = ReplyKeyboardMarkup(resize_keyboard=True).add(
 )
 
 auth_menu_markup = ReplyKeyboardMarkup(resize_keyboard=True).add(
-    KeyboardButton(text="Тест меню"),
+    KeyboardButton(text="Места"),
+    KeyboardButton(text="Поиск мест..."),
+    KeyboardButton(text=""),
+    KeyboardButton(text=""),
 )

@@ -41,7 +41,7 @@ async def get_contact(message:Message):
     last_name = message.contact.last_name
     phone = message.contact.phone_number
     RegistrationUserPG(user_id, username, first_name, last_name, phone)
-    await message.reply(text=START_CAPTION)
+    await message.reply(text=START_CAPTION, reply_markup=auth_menu_markup)
 
 
 if __name__ == "__main__":
