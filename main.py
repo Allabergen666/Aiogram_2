@@ -44,6 +44,138 @@ async def get_contact(message:Message):
     await message.reply(text=START_CAPTION, reply_markup=auth_menu_markup)
 
 
+@dp.message_handler(content_types=ContentTypes.TEXT)
+async def message_user(message:Message):
+    if CheckRegister(message.from_user.id) is not None:
+        if message.text.lower() == "места":
+            await message.delete()
+            places_markup.inline_keyboard = []
+            num = 0
+            for location in get_location():
+                num += 1
+                places_markup.add(
+                    InlineKeyboardButton(text=location[0], callback_data=f"mesta_{num}")
+                )
+            places_markup.add(
+                # switch_inline_query_current_chat вызывает имя бота обратно нам                 
+                InlineKeyboardButton(text="Поиск...", switch_inline_query_current_chat="")
+                )
+            await message.answer(text="Топ 5 мест дня, для обновление мест гажмине Места еще раз", reply_markup=places_markup)
+    else:
+        await message.reply(text=START_CAPTION3, reply_markup=start_markup)
+
+
+@dp.callback_query_handler(text_contains="mesta_")
+async def data_location(call:CallbackQuery):
+    if call.data and call.data.startswith("mesta_"):
+        code = call.data[-1:]
+    if code.isdigit():
+        code = int(code)
+
+    if code ==  1:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  2:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  3:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  4:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  5:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  6:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  7:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  8:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  9:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+    if code ==  10:
+        for i in call.message.reply_markup.inline_keyboard:
+            if i[0]['callback_data'] == call.data:
+                try:
+                    result = get_name_location(i[0]["text"])
+                    text = f"Название: {result[2]}\nКатигория: {result[1]}\nАдрес: {result[3]}\nПодробнее: <a href='{result[4]}'>Нажмите тут</a>"
+                   
+                    await call.message.edit_text(text, reply_markup=places_markup)
+                except:
+                    continue
+
+
+
+
 if __name__ == "__main__":
     try:
         executor.start_polling(dp)
